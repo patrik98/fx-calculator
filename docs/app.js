@@ -9,6 +9,16 @@ document.querySelectorAll('select').forEach(element => {
     `
 });
 
+document.querySelector('button').addEventListener('click', async () => {
+    const inputCurrency = document.querySelector('[name="input-currency"]').value;
+    const outputCurrency = document.querySelector('[name="output-currency"]').value;
+
+    const inputValue = document.querySelector('[name="input-value"]').value;
+    const outputValue = await convert(inputValue, inputCurrency, outputCurrency);
+
+    document.querySelector('[name="output-value"]').value = round(outputValue, 2);
+});
+
 // const fixerUri = 'https://data.fixer.io/api/latest?base=EUR&symbols=USD,SEK,CHF&access_key=API_KEY';
 const fixerUri = 'fixer.json';
 
