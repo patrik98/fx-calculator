@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="apple-touch-icon" href="icon192.png">
-    <script defer src="app.js" async></script>
+    <script async src="app.js" async></script>
+    <script>        
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
 </head>
 <body>
     <main>
