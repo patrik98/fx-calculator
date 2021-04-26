@@ -1,0 +1,11 @@
+{
+  "name": "fx-calculator",
+  "main": "docs/index.js",
+  "scripts": {
+    "start": "http-server docs -p 8000"
+  },
+  "author": "Patrik Golec",
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}
