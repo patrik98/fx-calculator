@@ -8,3 +8,6 @@ document.querySelectorAll('select').forEach(element => {
     <option value="BTC">BTC</option>
     `
 });
+
+// const fixerUri = 'https://data.fixer.io/api/latest?base=EUR&symbols=USD,SEK,CHF&access_key=API_KEY';
+const fixerUri = "fixer.json";
