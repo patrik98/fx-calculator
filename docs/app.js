@@ -47,7 +47,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 window.addEventListener('appinstalled', () => {    
     prompt.style['display'] = 'none';
     deferredPrompt = null;
-    updatePWADisplayMode();
 });
 
 prompt.addEventListener('click', function(event) {
@@ -57,25 +56,8 @@ prompt.addEventListener('click', function(event) {
             console.log("result of user prompt", result);
             prompt.style['display'] = 'none';
             deferredPrompt = null;
-            updatePWADisplayMode();
         });        
     } else {
-        updatePWADisplayMode();
         prompt.style['display'] = 'none';
     }
 });
-
-function updatePWADisplayMode() {
-    let displayMode = "browser";
-
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-    if (document.referrer.startsWith('android-app://')) {
-        displayMode = 'twa'; // Trusted Web Activity
-    } else if (navigator.standalone || isStandalone) { // navigator.standalone iOS hack
-        displayMode = 'standalone';
-    }
-
-    document.querySelector('h1').textContent = `Simple PWA [${displayMode}]`;    
-}
-
-updatePWADisplayMode();
