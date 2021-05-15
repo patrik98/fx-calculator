@@ -33,7 +33,6 @@ function round(value, decimals) {
     return (Math.round(value * 100) / 100).toFixed(decimals);
 }
 
-
 // PWA-related install prompt
 
 const prompt = document.querySelector('article');
@@ -42,7 +41,7 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    prompt.style['display'] = 'inline';
+    prompt.style['display'] = 'block';
 });
 
 window.addEventListener('appinstalled', () => {    
@@ -67,12 +66,16 @@ prompt.addEventListener('click', function(event) {
 });
 
 function updatePWADisplayMode() {
+    let displayMode = "browser";
+
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
     if (document.referrer.startsWith('android-app://')) {
         displayMode = 'twa'; // Trusted Web Activity
     } else if (navigator.standalone || isStandalone) { // navigator.standalone iOS hack
         displayMode = 'standalone';
     }
+
+    document.querySelector('h1').textContent = `Simple PWA [${displayMode}]`;    
 }
 
 updatePWADisplayMode();
